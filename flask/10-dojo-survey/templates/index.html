@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dojo survey</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='/img/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+
+    <div class="container">
+        <form action='/result' method='post'>
+        <p>What is your name: <input type='text' name='name'></p>
+        <label for="lang">Dojo Location:</label>
+        <input type="text" list="location_list" name="location" />
+        <datalist id="location_list">
+            <option value="Chicago, IL"></option>
+            <option value="Dallas, TX"></option>
+            <option value="Brooklyn, NY"></option>
+        </datalist> <br>
+        <!-- I know that <br> is not the best solution, but I don't have time to play with CSS -->
+        <label for="fav_prog_lang_list">Favourite Language:</label>
+        <input type="text" list="proglang" name="fav_prog_lang" />
+        <datalist id="proglang">
+            <option value="JavaScript 📒"></option>
+            <option value="Python 🐍"></option>
+            <option value="C #️⃣"></option>
+        </datalist>
+        <br>
+        <textarea name="text" rows="10" cols="50"></textarea>
+        <br>
+
+        <input type="submit" value="Submit" />
+    </form>
+    </div>
+
+</body>
+</html>

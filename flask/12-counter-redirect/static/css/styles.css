@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    margin: 2rem;
+    padding: 2rem;
+    background: linear-gradient(225deg, #6461a5, #2a0845);
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+input{
+    cursor: pointer;
+    border: 0;
+    border-radius: 100vmax;
+    background: black;
+    color: white;
+    text-transform: uppercase;
+    padding: .3em 1em;
+    margin-top: 1em;
+}
+input:hover{
+    background: grey;
+}
+
+.container {
+    margin: 0 auto;
+    text-align: center;
+    width: 20%;
+
+}

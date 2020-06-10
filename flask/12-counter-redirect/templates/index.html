@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/styles.css') }}">
+    <title>counter</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1> minimalistic</h1>
+        <h1> counter </h1>
+        <h1> {{session['count']}} times</h1>
+
+        <form action='/initialize_the_sequence' method='post'>
+            <input type='submit' value='ADD +2'>
+        </form>
+
+        <form action='/destroy_session' method='post'>
+            <input type='submit' value='RESET'>
+        </form>
+    </div>
+</body>
+
+</html>

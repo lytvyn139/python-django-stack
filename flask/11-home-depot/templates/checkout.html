@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Depote</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/5/5f/TheHomeDepot.svg" alt="Home Depot" width="75" height="75">
+                    <strong>Home Depot</strong>
+                </a>
+            </div>
+        </div>
+    </header>
+  
+        <section class="jumbotron text-center">
+          <div class="container">
+            <h1 class="jumbotron-heading">Thank you for your order!</h1>
+            <p class="lead text-muted">You ordered {{ total }} items today, on {{ date }}.</p>
+          </div>
+        </section>
+  
+        <div class="album py-5 bg-light">
+          <div class="container">
+                <h4 class="mb-3">You have have ordered</h4>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Bit Set</td>
+                        <td>{{ quantity_b }}</td>
+                    </tr>
+                    <tr>
+                        <td>Circular Saw</td>
+                        <td>{{ quantity_c }}</td>
+                    </tr>
+                    <tr>
+                        <td>Orbital Sander</td>
+                        <td>{{ quantity_o }}</td>
+                    </tr>
+                    <tr>
+                      <td>Nail Gun</td>
+                      <td>{{ quantity_n }}</td>
+                  </tr>
+                    </tbody>
+                </table>
+  
+                <h4 class="mb-3">Your Information</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        First Name: {{ first_name }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        Last Name: {{ last_name }}
+                    </div>
+                </div>
+  
+                <div class="mb-3">
+                    Discount ID: {{ discount_id }}
+                </div>
+              
+                <hr class="mb-4">
+                <a class="btn btn-primary btn-lg btn-block" href="/">Go Back</a>
+            
+          </div>
+        </div>
+  
+      
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Depote</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/5/5f/TheHomeDepot.svg" alt="Home Depot" width="75" height="75">
+                    <strong>Home Depot</strong>
+                </a>
+            </div>
+        </div>
+    </header>
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Welcome to Home Depot!</h1>
+                <p class="lead text-muted">Most durable tools on market.</p>
+                <p>
+                    <a href="#buy" class="btn btn-primary my-2">Procced to checkout</a>
+                    <a href="/tools" class="btn btn-primary my-2">See the inventory</a>
+                </p>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <form action='/checkout' method='post'>
+                    <h4 class="mb-3" id='buy'>What would you like to buy today?</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bit Set</td>
+                                <td>
+                                    <select name='bitset'>
+                                        <option value='0'>0</option>
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
+                                        <option value='5'>5</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Circular Saw</td>
+                                <td>
+                                    <select name='saw'>
+                                        <option value='0'>0</option>
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
+                                        <option value='4'>5</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Orbital Sander</td>
+                                <td>
+                                    <select name='sander'>
+                                        <option value='0'>0</option>
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
+                                        <option value='5'>5</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Nail Gun</td>
+                                <td>
+                                    <select name='nailgun'>
+                                        <option value='0'>0</option>
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
+                                        <option value='5'>5</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="mb-3" id='info'>Your Information</h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label id="firstName">First name</label>
+                            <input type="text" class="form-control" name="first_name" placeholder="" value="">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label id="lastName">Last name</label>
+                            <input type="text" class="form-control" name="last_name" placeholder="" value="">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label id="email">Discount ID <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" name="discount_id" placeholder="xxx-XXX-xxx">
+                    </div>
+
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Checkout</button>
+                </form>
+
+            </div>
+        </div>
+</body>
+</html>
+
+
+
