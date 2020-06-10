@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>boxes</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+
+
+</head>
+<body>
+    <h1>procced to:</h1>
+    <h2>http://127.0.0.1:5000/plaground/x/y </h2>
+
+    <p>where x: is integer num of boxes you want to render</p>
+    <p>where y: is color, but we using only fancy colors here</p>
+    <p>chartreuse darkorchid lightsalmon</p>
+    <h2>http://127.0.0.1:5000/plaground/20/chartreuse </h2>
+    <p>PS: If you enter color that not in list, the boxes will be white 🤦‍♂️</p>
+    <img src="{{ url_for('static', filename='img/01.png') }}">    
+</body>
+</html>

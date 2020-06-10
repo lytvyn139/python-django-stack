@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script> -->
+
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>8x8</h1>
+    {% for i in range(4):%}
+    <table>
+        <tr>
+            {% for j in range(4): %}
+            <td class="color-1"></td>
+            <td class="color-2"></td>
+            {% endfor %}
+        </tr>
+
+        <tr>
+            {% for j in range(4): %}
+            <td class="color-2"></td>
+            <td class="color-1"></td>
+            {% endfor %}
+        </tr>
+    </table>
+    {% endfor %}
+
+    <h1>refactored</h1>
+    {% for i in range(3):%}
+    <table>
+        <tr>
+            {% for j in range(3): %}
+            <td class="color-{{ (i+j) % 2 }}"></td>
+            {% endfor %}
+        </tr>
+    </table>
+    {% endfor %}
+
+    <h1>8x8 refactored</h1>
+
+    {% for i in range(8):%}
+    <table>
+        <tr>
+            {% for j in range(8): %}
+            <td class="color-{{ (i+j) % 2+1 }}"></td>
+            {% endfor %}
+        </tr>
+    </table>
+    {% endfor %}
+    
+</body>
+</html>
+<!-- <img src="{{ url_for('static', filename='img/01.png') }}">     -->
