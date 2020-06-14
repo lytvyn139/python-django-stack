@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"></link>
+    <title>random</title>
+</head>
+
+<body>
+    <h2> Random word ( Attempt #{{ request.session.counter }} ) </h2> 
+    <h1 class="pass-container">{{ random_words_from_py }}</h1>
+    <a href=""> <button>Generate</button> </a>
+    <a href="/reset"> <button> Reset </button> </a>
+    
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"></link>
+    <title>SESSION</title>
+    
+</head>
+<body>
+    <p>You have visited this page this many times: {{request.session.visitCountCookie}}</p>
+    <h3>Register below!</h3>
+    <form action="/registerUser" method="post">
+        {% csrf_token %}
+        <p>First name: <input type="text" name="form_name" id=""></p>
+        <p>Email: <input type="text" name="form_email" id=""></p>
+        <p>Favorite Color: <input type="text" name="form_color" id=""></p>
+        <p><input type="submit" value="Register!"></p>
+    </form>
+</body>
+</html>
