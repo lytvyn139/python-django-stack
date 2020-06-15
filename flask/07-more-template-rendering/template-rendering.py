@@ -1,8 +1,6 @@
 #############################
 #       RUN
-#       python3 checkerboard.py
-#       http://127.0.0.1:5000/10/10/green/black/
-#       (http:// .....       /x-size/y-size/color/color/)
+#       http://127.0.0.1:5000/lists
     
 from flask import Flask, render_template   
 app = Flask(__name__)    
