@@ -1,0 +1,1 @@
+https://github.com/lytvyn139/python-django-librarium
