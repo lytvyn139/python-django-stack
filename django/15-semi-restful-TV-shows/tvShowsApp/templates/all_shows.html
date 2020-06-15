@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shows</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+</head>
+
+<body>
+    {# http://127.0.0.1:8000/shows #}
+    <div class="flex2">
+        <div class="col">
+            <table>
+                <thead>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Network</th>
+                    <th scope="col">Release Date</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </thead>
+                <tbody>
+                    {% for object in all_shows %}
+                    <tr>
+                        <td>{{object.id}}</td>
+                        <td>{{object.title}}</td>
+                        <td>{{object.network}}</td>
+                        <td>{{object.release_date}}</td>
+                        <td>{{object.desc}}</td>
+                        <td>
+                            <div class="inline">
+                                <a href="/shows/{{object.id}}/edit"><button class="btn" type="Submit">EDIT</button></a>
+                                <a href="/shows/{{object.id}}/delete"><button class="btn" type="Submit">DELETE</button></a> 
+                                <a href="/shows/{{object.id}}"><button class="btn" type="Submit">SHOW</button></a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="/shows/new"><button class="btn" id="centerBtn"  type="Submit">Add new</button></p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

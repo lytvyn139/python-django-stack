@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap");
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+  background: linear-gradient(225deg, #000000, #2a0845);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  line-height: 1.5;
+  font-family: "Roboto", sans-serif;
+}
+
+a{
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.center {
+  text-align: center;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.col {
+  color: #424346;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+.col h2,
+.col p {
+  margin: 0;
+  padding: 0 1.25rem;
+}
+.col h2,
+.col h3 
+{
+  padding-left: 1rem;
+  text-align: left;
+}
+.col p {
+  margin-bottom: 1.5rem;
+  text-align: left;
+  font-size: 0.9em;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 500px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.flex2{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 1000px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.flex .col {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 300px;
+  margin: 1em 0.5em;
+}
+
+
+/* TABLE */
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background: linear-gradient(225deg, #5854a7, #2a0845);
+  color: white;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+tr:hover { 
+  background-color: #ddd;
+}
+
+#textarea {
+  margin-left: 30px;
+}
+/* TABLE */
+
+/* BUTTONS  */
+.btn {
+  cursor: pointer;
+  border: 0;
+  background: #5854a7;
+  color: white;
+  border-radius: 5px;
+  padding: .5rem .5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #4d48aa;
+}
+.inline {
+  display: flex;
+  justify-content: center;
+  margin: .5rem;
+  padding: .5rem;
+}
+
+#centerBtn {
+  margin-left: 200px;
+  margin-top: 30px;
+}
+/* BUTTONS  */

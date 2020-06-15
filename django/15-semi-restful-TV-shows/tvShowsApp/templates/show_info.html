@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shows</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+</head>
+
+<body>
+    <div class="flex">
+        <div class="col">
+            <h1>{{ selected_show.title }}</h1>
+            <h3>Network: {{ selected_show.network }}</h3>
+            <h3>Release Date: {{ selected_show.release_date }}</h3>
+            <h3>Description:</h3>
+            <p>{{ selected_show.desc }}</p>
+            <p>last edited:</span> {{ selected_show.updated_at }}</p>
+            <div class="inline">
+                <a href="/shows"><button class="btn" type="Submit">BACK</button></a>
+                <a href="/shows/{{selected_show.id}}/edit"><button class="btn" type="Submit">EDIT</button></a> 
+                <a href="/shows/{{selected_show.id}}/delete"><button class="btn" type="Submit">DELETE</button></a>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
