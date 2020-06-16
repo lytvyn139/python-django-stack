@@ -15,6 +15,14 @@
     {# http://127.0.0.1:8000/ #}
     <div class="flex">
         <div class="col">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
             <h1>Add a New Show</h1>
             <form action="/shows/create" method="POST">
                 {% csrf_token %}
@@ -24,10 +32,11 @@
                 <p>Description:</p>
                 <textarea id="textarea" name="desc" rows="8" cols="50"></textarea>
                 <div class="inline"></div>
-                    <p><button class="btn" id="centerBtn" type="Submit">Create</button></p>
-                </div>
-            </form>
+                <p><button class="btn" id="centerBtn" type="Submit">Create</button></p>
         </div>
+        </form>
+    </div>
     </div>
 </body>
+
 </html>

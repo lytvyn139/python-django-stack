@@ -118,6 +118,7 @@ tr:hover {
   padding: .5rem .5rem;
   font-weight: bold;
   text-decoration: none;
+  margin-top: 30px;
 }
 
 .btn:hover {
@@ -129,9 +130,15 @@ tr:hover {
   margin: .5rem;
   padding: .5rem;
 }
-
+ /*  https://media.makeameme.org/created/its-not-stupid-5af956.jpg  */
 #centerBtn {
   margin-left: 200px;
-  margin-top: 30px;
 }
+#updBtn {
+  margin-left: 180px;
+}
+#addNew {
+  margin-left: 450px;
+}
+
 /* BUTTONS  */

@@ -13,19 +13,29 @@
 
 <body>
     {# http://127.0.0.1:8000/shows/3 #}
+
     <div class="flex">
         <div class="col">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
             <h1>Edit "{{ selected_show.title }}"" </h1>
             <form action="/shows/{{selected_show.id}}/update" method="POST">
-
                 {% csrf_token %}
                 <p>Title: <input type="text" name="title" value="{{ selected_show.title }}"> </p>
                 <p>Network: <input type="text" name="network" value="{{ selected_show.network }}"> </p>
+                <p>Network: <input type="text" name="network" > </p>
                 <p>Release Date: <input type="date" name="release_date" value="{{ selected_show.release_date }}"></p>
                 <p>Description:</p>
                 <textarea id="textarea" name="desc" class="textarea" rows="8" cols="50" value="{{ selected_show.desc }}"></textarea>
                 <p><button class="btn" id="centerBtn"  type="Submit">Update</button></p>
+                <p><a href="/shows/{{selected_show.id}}"class="btn" id="updBtn">GO TO SHOW</a></p>
             </form> 
+            
         </div> 
 
         </div>

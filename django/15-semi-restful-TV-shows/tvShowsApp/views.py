@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from time import strftime, strptime
+from django.contrib import messages
 from . models import Show
 
     # ROUTE 1
@@ -12,13 +13,20 @@ def index(request):
 
     # ROUTE 2
 def create_show(request): 
-    new_show = Show.objects.create(
-        title=request.POST['title'],
-        network=request.POST['network'],
-        release_date=request.POST['release_date'],
-        desc=request.POST['desc']
-    )
-    return redirect(f'/shows/{new_show.id}')
+    errors = Show.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/')
+    else:
+        new_show = Show.objects.create(
+            title=request.POST['title'],
+            network=request.POST['network'],
+            release_date=request.POST['release_date'],
+            desc=request.POST['desc']
+        )
+        print(new_show.release_date)
+        return redirect(f'/shows/{new_show.id}')
 
     # ROUTE 3
 def show_info(request, show_id):
@@ -57,14 +65,22 @@ def delete_show(request, show_id):
 ########################################################
 # POST REQUEST
 def update_show(request, show_id):
-    print(request.POST)
-    show_to_update = Show.objects.get(id=show_id)
-    show_to_update.title = request.POST['title']
-    show_to_update.network = request.POST['network']
-    show_to_update.release_date = request.POST['release_date']
-    show_to_update.desc = request.POST['desc']
-    show_to_update.save()
-    return redirect(f'/shows/{show_id}')
+    errors = Show.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+            return redirect(f'/shows/{show_id}')
+        #return redirect('/')
+        
+    else:
+        print(request.POST)
+        show_to_update = Show.objects.get(id=show_id)
+        show_to_update.title = request.POST['title']
+        show_to_update.network = request.POST['network']
+        show_to_update.release_date = request.POST['release_date']
+        show_to_update.desc = request.POST['desc']
+        show_to_update.save()
+        return redirect(f'/shows/{show_id}')
 
 
 def new_show(request):
