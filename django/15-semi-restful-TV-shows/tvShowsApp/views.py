@@ -39,6 +39,7 @@ def all_shows(request):
     return render(request, 'all_shows.html', context)
 
     # ROUTE 5
+#GET REQUEST
 def edit_show(request, show_id):
     selected_show = Show.objects.get(id=show_id)
     context = {
@@ -47,13 +48,16 @@ def edit_show(request, show_id):
     return render(request, 'edit_show.html', context)
 
     # ROUTE 6
+#GET REQUEST
 def delete_show(request, show_id):
     selected_show = Show.objects.get(id=show_id)
     selected_show.delete()
-    return redirect('/shows')
+    return redirect('/shows')  #redirects to /shows after deleting
+    
 ########################################################
-
+# POST REQUEST
 def update_show(request, show_id):
+    print(request.POST)
     show_to_update = Show.objects.get(id=show_id)
     show_to_update.title = request.POST['title']
     show_to_update.network = request.POST['network']
