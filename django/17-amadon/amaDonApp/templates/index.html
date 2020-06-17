@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>amaDon</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+</head>
+
+<body>
+    <div class="flex">
+        <div class="col">
+            {% csrf_token %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Buy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in all_products %}
+                    <tr>
+                        <form action="/order" method="post">
+                            {% csrf_token %}
+                            <td>{{product.name}}</td>
+                            <td><input type="hidden" name="product_id" value="{{product.id}}">${{product.price}}</td>
+                            <td><select name="quantity">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select></td>
+                            <td><input class="btn" type="submit" value="Order"></td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </table>
+            <a id="red" class="btn " href="/">Clear Cart</a>
+        </div>
+    </div>
+</body>
+
+</html>

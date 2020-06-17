@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>amaDon</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+</head>
+
+<body>
+    <div class="flex">
+        <div class="col">
+            <h3 class="header">Total:</h3>
+            <p>Charging card ending *3523 for ${{charged}}</p>
+            <p> So far you have made #{{all_orders_total_quantity}} orders, and spent ${{all_orders_price}}<p> 
+            <h3>where we appreciate your that !</h3>
+            <a class="btn" href="/">Go back</a>
+        </div>
+    </div>
+</body>
+
+</html>
