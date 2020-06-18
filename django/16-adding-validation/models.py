@@ -1,4 +1,4 @@
-from django.db import model
+from django.db import models
 
 class BlogManager(models.Manager):
     def basic_validator(self, postData):
@@ -32,6 +32,3 @@ class Blog(models.Model):
 #         return errors
 #         if not date_validator.match(postData['release_date']):
 #         errors['release_date'] = "Date should be in YYYY-MM-DD format"
-
-
-
