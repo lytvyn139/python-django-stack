@@ -3,20 +3,18 @@ from .models import *
 from django.contrib import messages
 import bcrypt
 
-# Load login & registration page
 def index(request):
     return render(request, 'index.html')
 
-# Register function that validates registration form data & creates new user record with brypt hashed password. Creates session with user's name & redirects to the wall page (through /success route)
 def register(request):
     errors = User.objects.register_validator(request.POST)
     if len(errors) > 0:
         for key, value in errors.items():
-            messages.error(request, value, extra_tags='register') # extra tag to distinguish registration message from login message
+            messages.error(request, value, extra_tags='register') 
         return redirect('/')
     password = request.POST['pw']
     pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
-    print(pw_hash)
+    print(f'plz dont hack: {pw_hash}')
     newUser = User.objects.create(
         first_name=request.POST['first_name'],
         last_name=request.POST['last_name'],
@@ -26,7 +24,16 @@ def register(request):
     request.session['userID'] = newUser.id
     return redirect('/success')
 
-# Login function that validates login form data & logs creates user session, redirects to wall page through /success route.
+def success(request):
+    if 'userID' in request.session:
+        context = {
+            'name' : User.objects.get(id=request.session['userID']).first_name,
+            'messages' : Message.objects.all().order_by('-created_at')
+        }
+        return render(request, 'wall.html', context)
+    return redirect ('/')
+
+
 def login(request):
     errors = User.objects.login_validator(request.POST)
     if len(errors) > 0:
@@ -40,14 +47,6 @@ def logout(request):
     request.session.clear()
     return redirect ('/')
 
-def success(request):
-    if 'userID' in request.session:
-        context = {
-            'name' : User.objects.get(id=request.session['userID']).first_name,
-            'messages' : Message.objects.all().order_by('-created_at')
-        }
-        return render(request, 'wall.html', context)
-    return redirect ('/')
 
 def message(request):
     Message.objects.create(message = request.POST['message'], user = User.objects.get(id=request.session['userID']))

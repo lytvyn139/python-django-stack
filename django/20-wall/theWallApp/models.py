@@ -3,25 +3,20 @@ import re, bcrypt
 
 class userManager(models.Manager):
     def register_validator(self,postData):
+        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         errors = {}
         if len(postData['first_name']) < 2:
             errors['first_name'] = "First name must be filled out and at least 2 characters long!"
         if len(postData['last_name']) < 2:
             errors['last_name'] = "Last name must be filled out and at least 2 characters long!"
-        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if not EMAIL_REGEX.match(postData['email']):         
             errors['email'] = "Invalid email address!"
-
-        # looks to see if email is already in database
         elif len(User.objects.filter(email=postData['email'])) > 0:
             errors['existingEmail'] = "Email is already taken by another user"
-        
-        # Checks length of password, and if long enough, will check the passwords against eachother
         if len(postData['pw']) < 8:
             errors['pw'] = "Password must be at least 8 characters!"
         elif postData['pw'] != postData['confirm_pw']:
             errors['confirm_pw'] = "Password does not match confirm password field!"
-
         return errors
 
     def login_validator(self,postData):

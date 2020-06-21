@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>wall</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style-wall.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+</head>
+
+<body>
+    <h1>Welcome to the "The wall"</h1>
+    <form action="/logout" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-red" type="submit">Logout</button>
+    </form>
+
+    <h3>Post:</h3>
+        <form action="/message" method="POST">
+            {% csrf_token %}
+            <textarea name="message" id="" cols="80" rows="5" placeholder=""></textarea>
+            <button class="btn btn-green" type="submit">Post Message</button>
+        </form>
+        {% for message in messages %}
+        {% if message.user.id == request.session.userID %}
+        <h4>{{message.message}}</h4>
+        <p class="wall">You posted at {{message.created_at}}:</p>
+        <h5><a href="/deleteMessage/{{message.id}}" class="btn-red">Delete message</a></h5>
+        {% else %}
+        <p class="wall"> >>{{ message.user.first_name }} {{ message.user.last_name}} posted at {{message.created_at}}:</p>
+        <h4>{{message.message}}</h4>
+        {% endif %}
+        {% for comment in message.comments.all %}
+        {% if comment.user.id == request.session.userID %}
+            <p class="wall">You commented at {{comment.created_at}}:</p>
+            <h5>{{comment.comment}}</h5>
+            <h5><a href="deleteComment/{{comment.id}}" class="btn-red">Delete comment</a></h5>
+            {% else %}
+            <p class="wall">{{ comment.user.first_name }} {{ comment.user.last_name}} commented at {{comment.created_at}}:</p>
+            <h5>{{comment.comment}}</h5>
+            {% endif %}
+        {% endfor %}
+    <h3 class="comment-form">Comment this post:</h3>
+    <form class="comment-form" action="/comment" method="POST">
+        {% csrf_token %}
+        <textarea name="comment" id="" cols="80" rows="5" placeholder=""></textarea>
+        <input type="hidden" name="messageID" value="{{message.id}}">
+        <button class="btn btn-green" type="submit">Post Comment</button>
+    </form>
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+</body>
+</html>
