@@ -7,6 +7,7 @@ urlpatterns = [
     path('success', views.success),
     path('login', views.login),
     path('logout', views.logout),
+    
     path('message', views.message),
     path('comment', views.comment),
     path('deleteMessage/<int:messageID>', views.deleteMessage),

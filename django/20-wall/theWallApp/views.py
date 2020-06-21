@@ -33,7 +33,6 @@ def success(request):
         return render(request, 'wall.html', context)
     return redirect ('/')
 
-
 def login(request):
     errors = User.objects.login_validator(request.POST)
     if len(errors) > 0:
@@ -46,7 +45,6 @@ def login(request):
 def logout(request):
     request.session.clear()
     return redirect ('/')
-
 
 def message(request):
     Message.objects.create(message = request.POST['message'], user = User.objects.get(id=request.session['userID']))
