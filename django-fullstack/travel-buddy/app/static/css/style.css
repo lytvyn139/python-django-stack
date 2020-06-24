@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap');
+
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to right, #004e92, #000428);
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  line-height: 1.5;
+  font-family: "Poppins", sans-serif;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #004e92;
+  outline: none;
+}
+
+h1 {
+  color: #fff;
+}
+
+h2 {
+  color: #000;
+}
+.login-header {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* LOGIN */
+.login-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 400px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.col {
+  color: black;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.login-container .col {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 800px;
+  margin: 5rem 1rem
+}
+
+/* ERROR */
+.error {
+  margin: 0 auto;
+  background: transparent;
+  color: red;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto;
+}
+
+li {
+  width: 500px;
+}
+
+/* ERROR */
+
+/* BUTTONS  */
+.btn {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  cursor: pointer;
+  border: 0;
+  color: white;
+  background: #004e92;
+  border-radius: 15px;
+  padding: .5rem .5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background: #1525bb;
+}
+.links {
+  cursor: pointer;
+  color: white;
+  background: red;
+  border-radius: 15px;
+  padding: .5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.links:hover {
+  background: #1525bb;
+}
+
+
+/* BUTTONS  */
+
+/* TABLE */
+
+.table-container td,
+.table-container th {
+  border: 1px solid #fff;
+  padding: 8px;
+  background-color: #fff;
+}
+
+.table-container th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(38, 75, 177);
+  color: #fff;
+}
+
+/* TABLE */

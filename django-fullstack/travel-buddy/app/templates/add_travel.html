@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TRIP</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="col">
+            <p> <a href="/" class="links">BACK</a> <a href="/logout" class="links">LOGOUT</a> </p>
+            <h2> Add your trip info</h2>
+            <form action="addPlan/" method="post">
+                {% csrf_token %}
+                <p>Destination: <input type="text" id="destination" name="destination"></p>
+                <p>Description: </p>
+                <textarea name="description" rows="10" cols="30"></textarea>
+                <p>Date From: <input type="date" name="date_from"> </p>
+                <p>Date To: <input type="date" name="date_to"></p>
+                <input type="submit" class="links" value="Add">
+            </form>
+        </div>
+    </div>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+
+</html>
