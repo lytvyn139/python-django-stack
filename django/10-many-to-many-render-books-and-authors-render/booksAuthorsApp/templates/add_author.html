@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>◧ LIBRARIUM ◨</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+</head>
+
+<body>
+
+    <div class="flex">
+        <div class="col">
+            <h2>Add an Author</h2>
+            <form action="/submitAuthor" method="POST">
+                {% csrf_token %}
+                <p>First Name: <input type="text" name="first_name"></p>
+                <p>Last Name: <input type="text" name="last_name"></p>
+                <p>Notes</p>
+                <textarea id="textarea" name="notes" rows="8" cols="50">Few words about author</textarea>
+                <p><button id="add-btn" type="Submit">Add</button></p>
+            </form>
+        </div>
+        <div class="col">
+            <table>
+                <thead>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Action</th>
+                </thead>
+                <tbody>
+                    {% for author in authors %}
+                    <tr>
+                        <th scope="col">{{ author.id }}</td>
+                        <td>{{ author.first_name }} {{ author.last_name }}</td>
+                        <td><a href="/author/{{author.id}}">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

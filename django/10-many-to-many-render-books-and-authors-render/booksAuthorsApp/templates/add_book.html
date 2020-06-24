@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>◧ LIBRARIUM ◨</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+</head>
+
+<body>
+    <div class="flex">
+        <div class="col">
+            <h2>Add book</h2>
+            <form action="/submitBook" method="POST">
+                {% csrf_token %}
+                <p>Title: <input type="text" name="title"></p>
+                <p>Description:</p>
+                <textarea id="textarea" name="desc" rows="8" cols="50">What this book is about</textarea>
+                <p><button id="add-btn" type="Submit">Add</button></p>
+            </form>
+        </div>
+
+        <div class="col">
+            <table>
+                <thead>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Action</th>
+                </thead>
+                <tbody>
+                    {% for book in bookz %}
+                    <tr>
+                        <th scope="row">{{ book.id }}</td>
+                        <td>{{ book.title }}</td>
+                        <td><a href="/book/{{book.id}}">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

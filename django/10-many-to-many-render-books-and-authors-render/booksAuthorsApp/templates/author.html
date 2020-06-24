@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>◧ LIBRARIUM ◨</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+</head>
+
+</head>
+
+<body>
+    <div class="flex">
+
+        <div class="col">
+            <a href="/"><button id="back-btn" type="Submit">🠬 back</button></a>
+            <h2>{{ author.first_name }} {{ author.last_name }} </h2>
+            <h2>ID: {{author.id}}</h2>
+            <h2>Notes:</h2>
+            <p>{{ author.notes }}</p>
+            <h2>Books:</h2>
+            <ul>
+                {% for book in author.bookz.all %}
+                <li>{{book.title}}</li>
+                {% endfor %}
+            </ul>
+            <form action="/authorAddBook" method="POST">
+                {% csrf_token %}
+                <select name="bookz" id="">
+                    {% for book in bookz %}
+                    <option id="add-btn" value="{{book.id}}">{{book.title}}</option>
+                    {% endfor %}
+                </select>
+                <button id="add-btn-diff" type="submit">Add</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

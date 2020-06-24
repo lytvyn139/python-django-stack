@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>QUOTES</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+</head>
+
+<body>
+    <div class="quote-container">
+        <div class="col">    
+        <h2 class="header">EDIT</h2>
+        <form action="/update_quote/{{ editor.id }}" method="POST">
+            {% csrf_token %}
+            <p>Author: <input type="text" name="author"></p>
+            <p><textarea cols="27" rows="10" name="quote"></textarea></p>
+            <input type="submit" class="btn btn-green" value="EDIT">
+            <a href="/success" class="btn btn-green" value="EDIT">back</a>
+        </form>
+        {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}    
+        {% endif %}
+    </div>
+</body>
+</html>

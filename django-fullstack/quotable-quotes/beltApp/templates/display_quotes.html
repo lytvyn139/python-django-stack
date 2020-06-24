@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>QUOTES</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+</head>
+
+<body>
+    <div class="flex">
+    <h1>Welcome, {{ logged_in_user.name }}</h1>
+    <form action="/logout" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-red" type="submit">LOGOUT</button>
+    </form>
+    </div>
+    
+
+    <div class="quote-container">
+        <div class="col">
+            <h2 class="header">Quotable Quotes </h2>
+            {% for quotes_iterator in other_quotes %}
+                <!-- <p> <a href="/edit_quote/{{quotes_iterator.id}}">Edit Quote</a> | <a href="/delete_quote/{{quotes_iterator.id}}">Delete Quote</a> </p> -->
+                {% if logged_in_user == quotes_iterator.posted_by %}
+                <div class="inline-center">
+                    <a href="/edit_quote/{{quotes_iterator.id}}" class="btn btn-green">EDIT</a>  
+                    <a href="/delete_quote/{{quotes_iterator.id}}" class="btn btn-red">DELETE</a>
+                </div>
+                {% endif %}
+                <h3>"{{ quotes_iterator.quote}}"</h3>
+                <p>Quote by: {{ quotes_iterator.author }} | Added by: <a href="/posted_by/{{quotes_iterator.posted_by.id}}">{{ quotes_iterator.posted_by.name }}</a> | Created on: {{ quotes_iterator.created_at }}</p>
+                <div class="inline-center">
+                <a href="/add_to_fav/{{quotes_iterator.id}}" class="btn btn-green  ">ADD TO FAV</a>
+                </div>
+                <p>======================================================================================== </p>
+            {% endfor %}
+        </div>
+
+        <div class="col">
+            <h2 class="header">{{ logged_in_user.name }} favourite quotes are:</h2>
+            {% for quotes_iterator in my_quotes %}
+                <h3>"{{ quotes_iterator.quote }}"</h3>
+
+                <p>Quote by: {{ quotes_iterator.author }} | Added by: {{ quotes_iterator.posted_by.name }} | Created on: {{ quotes_iterator.created_at }}</p>
+                <div class="inline-center">
+                    <a href="/remove_from_fav/{{quotes_iterator.id}}" class="btn btn-red">REMOVE FROM FAV</a>
+                </div>
+            {% endfor %}
+            
+            <h2 class="header">Create quote:</h2>
+            <form action="/create_quote" method="POST">
+                {% csrf_token %}
+                <p>Author: <input type="text" name="author"></p>
+                <p><textarea cols="100" rows="10" name="quote"></textarea></p>
+                <input class="btn btn-green btn-add" type="submit" value="ADD">
+            </form>
+            {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}    
+            {% endif %}
+
+            <!-- IF CREATE IS ON DIFFERENT PAGE -->
+            <!-- <p><a href="/add_quote" class="btn btn-green">CREATE</a></p> -->
+
+        </div>
+    </div>
+
+
+
+</body>
