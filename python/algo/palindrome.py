@@ -1,3 +1,10 @@
+def palindrome(s):
+    # remove spaces
+    s = s.replace(' ','')
+    # check if string is == reversed 
+    return s == s[::-1]
+print( palindrome('nu rs e s r   un') ) 
+
 def isPalindrome(s): 
     rev = ''.join(reversed(s)) 
     if (s == rev): 
